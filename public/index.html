@@ -31,6 +31,9 @@
                         <td><input type='number' id='input_load_factor'></td>
                         <td>%</td>
                     </tr>
+                    <tr>
+                        <th colspan='3'>Capacity Growth</th>
+                    </tr>
                 </table>
             </div>
 
@@ -75,12 +78,32 @@
                 if(input_load_factor.value) {
                     p.set('input_load_factor', input_load_factor.value/100);
                 }
+                let capacity_growth = capacityGrowthValues();
+                if(capacity_growth.length > 0) {
+                    p.set('input_capacity_growth', JSON.stringify(capacity_growth));
+                }
                 return p;
+            }
+
+            function capacityGrowthValues() {
+                let controls = input_table.querySelectorAll('.capacity_growth_control');
+                let result = new Array(controls.length);
+                controls.forEach( (c) => {
+                    let i = c.dataset.i;
+                    let v = +c.value  / 100;   
+                    result[i] = v;                     
+                });
+                return result;
             }
             
             function setControlsToMatchData(data) {
                 input_capacity.value = data.input_capacity;
                 input_load_factor.value = (+data.input_load_factor * 100).toFixed(0);
+                input_table.querySelectorAll('.capacity_growth_control').forEach((c) => {
+                    let i = c.dataset.i;
+                    let v = (+data.input_capacity_growth[i] * 100).toFixed(0);
+                    c.value = v;
+                });
             }
 
             function updateOutputs(data) {
@@ -97,8 +120,16 @@
 
             async function loadInitialValues() {
                 let data = await loadData();
+                createControls(data);
                 setControlsToMatchData(data);
                 updateOutputs(data);
+            }
+
+            function createControls(data) {
+                data.output_years.forEach( (year, i) => {
+                    let c = `<tr><th>${year}</th><td><input type='number' class='capacity_growth_control' data-i='${i}'></td><td>%</td>`;
+                    input_table.insertAdjacentHTML('beforeend', c);
+                });
             }
 
             async function inputChanged() {

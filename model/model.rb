@@ -115,6 +115,13 @@ class Model
     # use this function to reset all cell values
     attach_function 'reset', [], :void
     attach_function 'set_sheet1_b2', [ExcelValue.by_value], :void
+    attach_function 'set_sheet1_b11', [ExcelValue.by_value], :void
+    attach_function 'set_sheet1_c11', [ExcelValue.by_value], :void
+    attach_function 'set_sheet1_d11', [ExcelValue.by_value], :void
+    attach_function 'set_sheet1_e11', [ExcelValue.by_value], :void
+    attach_function 'set_sheet1_f11', [ExcelValue.by_value], :void
+    attach_function 'set_sheet1_g11', [ExcelValue.by_value], :void
+    attach_function 'set_sheet1_h11', [ExcelValue.by_value], :void
     attach_function 'set_sheet1_b3', [ExcelValue.by_value], :void
     attach_function 'sheet1_b12', [], ExcelValue.by_value
     attach_function 'sheet1_c12', [], ExcelValue.by_value
@@ -146,12 +153,14 @@ class Model
     attach_function 'output_revenue', [], ExcelValue.by_value
     attach_function 'output_years', [], ExcelValue.by_value
     attach_function 'input_capacity', [], ExcelValue.by_value
+    attach_function 'input_capacity_growth', [], ExcelValue.by_value
     attach_function 'input_load_factor', [], ExcelValue.by_value
     attach_function 'output_capacity_by_year', [], ExcelValue.by_value
     attach_function 'output_energy', [], ExcelValue.by_value
     attach_function 'output_revenue', [], ExcelValue.by_value
     attach_function 'output_years', [], ExcelValue.by_value
     attach_function 'set_input_capacity', [ExcelValue.by_value], :void
+    attach_function 'set_input_capacity_growth', [ExcelValue.by_value], :void
     attach_function 'set_input_load_factor', [ExcelValue.by_value], :void
     # End of named references
   end # C module
