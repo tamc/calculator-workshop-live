@@ -116,16 +116,41 @@ class Model
     attach_function 'reset', [], :void
     attach_function 'set_sheet1_b2', [ExcelValue.by_value], :void
     attach_function 'set_sheet1_b3', [ExcelValue.by_value], :void
+    attach_function 'sheet1_b12', [], ExcelValue.by_value
+    attach_function 'sheet1_c12', [], ExcelValue.by_value
+    attach_function 'sheet1_d12', [], ExcelValue.by_value
+    attach_function 'sheet1_e12', [], ExcelValue.by_value
+    attach_function 'sheet1_f12', [], ExcelValue.by_value
+    attach_function 'sheet1_g12', [], ExcelValue.by_value
+    attach_function 'sheet1_h12', [], ExcelValue.by_value
+    attach_function 'sheet1_b13', [], ExcelValue.by_value
+    attach_function 'sheet1_c13', [], ExcelValue.by_value
+    attach_function 'sheet1_d13', [], ExcelValue.by_value
+    attach_function 'sheet1_e13', [], ExcelValue.by_value
+    attach_function 'sheet1_f13', [], ExcelValue.by_value
+    attach_function 'sheet1_g13', [], ExcelValue.by_value
+    attach_function 'sheet1_h13', [], ExcelValue.by_value
     attach_function 'sheet1_b6', [], ExcelValue.by_value
     attach_function 'sheet1_b8', [], ExcelValue.by_value
+    attach_function 'sheet1_b10', [], ExcelValue.by_value
+    attach_function 'sheet1_c10', [], ExcelValue.by_value
+    attach_function 'sheet1_d10', [], ExcelValue.by_value
+    attach_function 'sheet1_e10', [], ExcelValue.by_value
+    attach_function 'sheet1_f10', [], ExcelValue.by_value
+    attach_function 'sheet1_g10', [], ExcelValue.by_value
+    attach_function 'sheet1_h10', [], ExcelValue.by_value
     # end of Sheet1
     # Start of named references
+    attach_function 'output_capacity_by_year', [], ExcelValue.by_value
     attach_function 'output_energy', [], ExcelValue.by_value
     attach_function 'output_revenue', [], ExcelValue.by_value
+    attach_function 'output_years', [], ExcelValue.by_value
     attach_function 'input_capacity', [], ExcelValue.by_value
     attach_function 'input_load_factor', [], ExcelValue.by_value
+    attach_function 'output_capacity_by_year', [], ExcelValue.by_value
     attach_function 'output_energy', [], ExcelValue.by_value
     attach_function 'output_revenue', [], ExcelValue.by_value
+    attach_function 'output_years', [], ExcelValue.by_value
     attach_function 'set_input_capacity', [ExcelValue.by_value], :void
     attach_function 'set_input_load_factor', [ExcelValue.by_value], :void
     # End of named references

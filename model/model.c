@@ -1,6 +1,6 @@
 // /Users/tamc/Downloads/calculator-workshop-live/model/model.xlsx approximately translated into C
 // definitions
-#define NUMBER_OF_REFS 11
+#define NUMBER_OF_REFS 37
 #define EXCEL_FILENAME  "/Users/tamc/Downloads/calculator-workshop-live/model/model.xlsx"
 // end of definitions
 
@@ -3221,13 +3221,43 @@ static void assert_equal(ExcelValue expected, ExcelValue actual, char location[]
 
 ExcelValue sheet1_b2();
 ExcelValue sheet1_b3();
+ExcelValue sheet1_b12();
+ExcelValue sheet1_c12();
+ExcelValue sheet1_d12();
+ExcelValue sheet1_e12();
+ExcelValue sheet1_f12();
+ExcelValue sheet1_g12();
+ExcelValue sheet1_h12();
+ExcelValue sheet1_b13();
+ExcelValue sheet1_c13();
+ExcelValue sheet1_d13();
+ExcelValue sheet1_e13();
+ExcelValue sheet1_f13();
+ExcelValue sheet1_g13();
+ExcelValue sheet1_h13();
 ExcelValue sheet1_b6();
 ExcelValue sheet1_b8();
+ExcelValue sheet1_b10();
+ExcelValue sheet1_c10();
+ExcelValue sheet1_d10();
+ExcelValue sheet1_e10();
+ExcelValue sheet1_f10();
+ExcelValue sheet1_g10();
+ExcelValue sheet1_h10();
 static ExcelValue common0();
+static ExcelValue common1();
 // starting the value constants
 static ExcelValue constant1 = {.type = ExcelNumber, .number = 0.3};
-static ExcelValue constant2 = {.type = ExcelNumber, .number = 50.0};
-static ExcelValue constant3 = {.type = ExcelNumber, .number = 8766.0};
+static ExcelValue constant2 = {.type = ExcelNumber, .number = 1.1};
+static ExcelValue constant3 = {.type = ExcelNumber, .number = 50.0};
+static ExcelValue constant4 = {.type = ExcelNumber, .number = 2020.0};
+static ExcelValue constant5 = {.type = ExcelNumber, .number = 2021.0};
+static ExcelValue constant6 = {.type = ExcelNumber, .number = 2022.0};
+static ExcelValue constant7 = {.type = ExcelNumber, .number = 2023.0};
+static ExcelValue constant8 = {.type = ExcelNumber, .number = 2024.0};
+static ExcelValue constant9 = {.type = ExcelNumber, .number = 2025.0};
+static ExcelValue constant10 = {.type = ExcelNumber, .number = 2026.0};
+static ExcelValue constant11 = {.type = ExcelNumber, .number = 8766.0};
 // ending the value constants
 
 ExcelValue sheet1_b2_default() {
@@ -3244,53 +3274,214 @@ static ExcelValue sheet1_b3_variable;
 ExcelValue sheet1_b3() { if(variable_set[1] == 1) { return sheet1_b3_variable; } else { return sheet1_b3_default(); } }
 void set_sheet1_b3(ExcelValue newValue) { variable_set[1] = 1; sheet1_b3_variable = newValue; }
 
-ExcelValue sheet1_b6() { return common0(); }
-ExcelValue sheet1_b8() {
+ExcelValue sheet1_b12() {
+  static ExcelValue result;
+  if(variable_set[2] == 1) { return result;}
+  result = sheet1_b2();
+  variable_set[2] = 1;
+  return result;
+}
+
+ExcelValue sheet1_c12() {
   static ExcelValue result;
   if(variable_set[3] == 1) { return result;}
-  result = multiply(constant2,common0());
+  result = multiply(sheet1_b12(),constant2);
   variable_set[3] = 1;
   return result;
 }
 
-static ExcelValue common0() {
+ExcelValue sheet1_d12() {
   static ExcelValue result;
   if(variable_set[4] == 1) { return result;}
-  result = multiply(constant3,multiply(sheet1_b3(),sheet1_b2()));
+  result = multiply(sheet1_c12(),constant2);
   variable_set[4] = 1;
   return result;
 }
 
-// Start of named references
-ExcelValue output_energy() {
+ExcelValue sheet1_e12() {
   static ExcelValue result;
   if(variable_set[5] == 1) { return result;}
-  result = sheet1_b6();
+  result = multiply(sheet1_d12(),constant2);
   variable_set[5] = 1;
+  return result;
+}
+
+ExcelValue sheet1_f12() {
+  static ExcelValue result;
+  if(variable_set[6] == 1) { return result;}
+  result = multiply(sheet1_e12(),constant2);
+  variable_set[6] = 1;
+  return result;
+}
+
+ExcelValue sheet1_g12() {
+  static ExcelValue result;
+  if(variable_set[7] == 1) { return result;}
+  result = multiply(sheet1_f12(),constant2);
+  variable_set[7] = 1;
+  return result;
+}
+
+ExcelValue sheet1_h12() { return common0(); }
+ExcelValue sheet1_b13() {
+  static ExcelValue result;
+  if(variable_set[9] == 1) { return result;}
+  result = multiply(sheet1_b12(),sheet1_b3());
+  variable_set[9] = 1;
+  return result;
+}
+
+ExcelValue sheet1_c13() {
+  static ExcelValue result;
+  if(variable_set[10] == 1) { return result;}
+  result = multiply(sheet1_c12(),sheet1_b3());
+  variable_set[10] = 1;
+  return result;
+}
+
+ExcelValue sheet1_d13() {
+  static ExcelValue result;
+  if(variable_set[11] == 1) { return result;}
+  result = multiply(sheet1_d12(),sheet1_b3());
+  variable_set[11] = 1;
+  return result;
+}
+
+ExcelValue sheet1_e13() {
+  static ExcelValue result;
+  if(variable_set[12] == 1) { return result;}
+  result = multiply(sheet1_e12(),sheet1_b3());
+  variable_set[12] = 1;
+  return result;
+}
+
+ExcelValue sheet1_f13() {
+  static ExcelValue result;
+  if(variable_set[13] == 1) { return result;}
+  result = multiply(sheet1_f12(),sheet1_b3());
+  variable_set[13] = 1;
+  return result;
+}
+
+ExcelValue sheet1_g13() {
+  static ExcelValue result;
+  if(variable_set[14] == 1) { return result;}
+  result = multiply(sheet1_g12(),sheet1_b3());
+  variable_set[14] = 1;
+  return result;
+}
+
+ExcelValue sheet1_h13() {
+  static ExcelValue result;
+  if(variable_set[15] == 1) { return result;}
+  result = multiply(common0(),sheet1_b3());
+  variable_set[15] = 1;
+  return result;
+}
+
+ExcelValue sheet1_b6() { return common1(); }
+ExcelValue sheet1_b8() {
+  static ExcelValue result;
+  if(variable_set[17] == 1) { return result;}
+  result = multiply(constant3,common1());
+  variable_set[17] = 1;
+  return result;
+}
+
+ExcelValue sheet1_b10() { return constant4; }
+ExcelValue sheet1_c10() { return constant5; }
+ExcelValue sheet1_d10() { return constant6; }
+ExcelValue sheet1_e10() { return constant7; }
+ExcelValue sheet1_f10() { return constant8; }
+ExcelValue sheet1_g10() { return constant9; }
+ExcelValue sheet1_h10() { return constant10; }
+static ExcelValue common0() {
+  static ExcelValue result;
+  if(variable_set[25] == 1) { return result;}
+  result = multiply(sheet1_g12(),constant2);
+  variable_set[25] = 1;
+  return result;
+}
+
+static ExcelValue common1() {
+  static ExcelValue result;
+  if(variable_set[26] == 1) { return result;}
+  result = multiply(constant11,multiply(sheet1_b3(),sheet1_b2()));
+  variable_set[26] = 1;
+  return result;
+}
+
+// Start of named references
+ExcelValue output_capacity_by_year() {
+  static ExcelValue result;
+  if(variable_set[27] == 1) { return result;}
+  static ExcelValue array0[14];
+  array0[0] = sheet1_b12();
+  array0[1] = sheet1_c12();
+  array0[2] = sheet1_d12();
+  array0[3] = sheet1_e12();
+  array0[4] = sheet1_f12();
+  array0[5] = sheet1_g12();
+  array0[6] = sheet1_h12();
+  array0[7] = sheet1_b13();
+  array0[8] = sheet1_c13();
+  array0[9] = sheet1_d13();
+  array0[10] = sheet1_e13();
+  array0[11] = sheet1_f13();
+  array0[12] = sheet1_g13();
+  array0[13] = sheet1_h13();
+  ExcelValue array0_ev = EXCEL_RANGE(array0,2,7);
+  result = array0_ev;
+  variable_set[27] = 1;
+  return result;
+}
+
+ExcelValue output_energy() {
+  static ExcelValue result;
+  if(variable_set[28] == 1) { return result;}
+  result = sheet1_b6();
+  variable_set[28] = 1;
   return result;
 }
 
 ExcelValue output_revenue() {
   static ExcelValue result;
-  if(variable_set[6] == 1) { return result;}
+  if(variable_set[29] == 1) { return result;}
   result = sheet1_b8();
-  variable_set[6] = 1;
+  variable_set[29] = 1;
+  return result;
+}
+
+ExcelValue output_years() {
+  static ExcelValue result;
+  if(variable_set[30] == 1) { return result;}
+  static ExcelValue array0[7];
+  array0[0] = constant4;
+  array0[1] = constant5;
+  array0[2] = constant6;
+  array0[3] = constant7;
+  array0[4] = constant8;
+  array0[5] = constant9;
+  array0[6] = constant10;
+  ExcelValue array0_ev = EXCEL_RANGE(array0,1,7);
+  result = array0_ev;
+  variable_set[30] = 1;
   return result;
 }
 
 ExcelValue input_capacity() {
   static ExcelValue result;
-  if(variable_set[7] == 1) { return result;}
+  if(variable_set[31] == 1) { return result;}
   result = sheet1_b2();
-  variable_set[7] = 1;
+  variable_set[31] = 1;
   return result;
 }
 
 ExcelValue input_load_factor() {
   static ExcelValue result;
-  if(variable_set[8] == 1) { return result;}
+  if(variable_set[32] == 1) { return result;}
   result = sheet1_b3();
-  variable_set[8] = 1;
+  variable_set[32] = 1;
   return result;
 }
 

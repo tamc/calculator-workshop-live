@@ -17,6 +17,8 @@ get '/data' do
         input_load_factor: s.input_load_factor,
         output_energy: s.output_energy,
         output_revenue: s.output_revenue,
+        output_years: s.output_years.flatten,
+        output_capacity_by_year: s.output_capacity_by_year,
     }
     
     result.to_json

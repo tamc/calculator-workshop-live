@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Wind turbine calcualtor</title>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+        <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>    
         <style>
             th {
                 text-align: left;
@@ -44,6 +46,8 @@
                         <td id='output_revenue'>Not known</td>
                     </tr>
                 </table>
+                <h3>Capacity by year</h3>
+                <div id='line' class='ct-chart ct-golden-section'></div>
             </div>
         </div>
 
@@ -53,6 +57,8 @@
             const input_load_factor = document.querySelector('#input_load_factor');
             const output_energy = document.querySelector('#output_energy');
             const output_revenue = document.querySelector('#output_revenue');
+
+            const lineChart = new Chartist.Line('#line');
 
             async function loadData() {
                 let url = `/data?${parameters()}`;
@@ -80,6 +86,13 @@
             function updateOutputs(data) {
                 output_energy.textContent = `${data.output_energy.toFixed(0)} MWh/year`;
                 output_revenue.textContent = `£${data.output_revenue.toFixed(0)}/year`;
+
+                let chartData = {
+                    labels: data.output_years,
+                    series: data.output_capacity_by_year
+                };
+
+                lineChart.update(chartData);
             }
 
             async function loadInitialValues() {
