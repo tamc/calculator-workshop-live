@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wind turbine calcualtor</title>
+        <style>
+            #layout {
+                display: grid;
+                grid-gap: 1rem;
+                grid-template-columns: fit-content(20rem) auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Wind turbine calculator</h1>
+        <div id='layout'>
+            <div>
+                <h2>Inputs</h2>
+                <table id='input_table'>
+                    <tr>
+                        <th>Capacity</th>
+                        <td><input type='number' id='input_capacity'></td>
+                        <td>MW</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <h2>Outputs</h2>
+                <table id='output_table'>
+                    <tr>
+                        <th>Energy</th>
+                        <td id='output_energy'>Not known</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <script>
+            const input_table = document.querySelector('#input_table');
+            const input_capacity = document.querySelector('#input_capacity');
+            const output_energy = document.querySelector('#output_energy');
+
+            async function loadData() {
+                let url = `/data?${parameters()}`;
+                let response = await fetch(url);
+                let data = await response.json();
+                return data;
+            }
+
+            function parameters() {
+                let p = new URLSearchParams();
+                if(input_capacity.value) {
+                    p.set('input_capacity', input_capacity.value);
+                }
+                return p;
+            }
+            
+            function setControlsToMatchData(data) {
+                input_capacity.value = data.input_capacity;
+            }
+
+            function updateOutputs(data) {
+                output_energy.textContent = `${data.output_energy.toFixed(0)} MWh/year`;
+            }
+
+            async function loadInitialValues() {
+                let data = await loadData();
+                setControlsToMatchData(data);
+                updateOutputs(data);
+            }
+
+            async function inputChanged() {
+                let data = await loadData();
+                updateOutputs(data);
+            }
+
+            function listenForEvents() {
+                input_table.addEventListener('change', inputChanged)
+            }
+
+            (async function() {
+                await loadInitialValues();
+                listenForEvents();
+            })()
+
+        </script>
+    </body>
+</html>
