@@ -3,6 +3,9 @@
     <head>
         <title>Wind turbine calcualtor</title>
         <style>
+            th {
+                text-align: left;
+            }
             #layout {
                 display: grid;
                 grid-gap: 1rem;
@@ -21,6 +24,11 @@
                         <td><input type='number' id='input_capacity'></td>
                         <td>MW</td>
                     </tr>
+                    <tr>
+                        <th>Load factor</th>
+                        <td><input type='number' id='input_load_factor'></td>
+                        <td>%</td>
+                    </tr>
                 </table>
             </div>
 
@@ -31,6 +39,10 @@
                         <th>Energy</th>
                         <td id='output_energy'>Not known</td>
                     </tr>
+                    <tr>
+                        <th>Revenue</th>
+                        <td id='output_revenue'>Not known</td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -38,7 +50,9 @@
         <script>
             const input_table = document.querySelector('#input_table');
             const input_capacity = document.querySelector('#input_capacity');
+            const input_load_factor = document.querySelector('#input_load_factor');
             const output_energy = document.querySelector('#output_energy');
+            const output_revenue = document.querySelector('#output_revenue');
 
             async function loadData() {
                 let url = `/data?${parameters()}`;
@@ -52,15 +66,20 @@
                 if(input_capacity.value) {
                     p.set('input_capacity', input_capacity.value);
                 }
+                if(input_load_factor.value) {
+                    p.set('input_load_factor', input_load_factor.value/100);
+                }
                 return p;
             }
             
             function setControlsToMatchData(data) {
                 input_capacity.value = data.input_capacity;
+                input_load_factor.value = (+data.input_load_factor * 100).toFixed(0);
             }
 
             function updateOutputs(data) {
                 output_energy.textContent = `${data.output_energy.toFixed(0)} MWh/year`;
+                output_revenue.textContent = `£${data.output_revenue.toFixed(0)}/year`;
             }
 
             async function loadInitialValues() {

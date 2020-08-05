@@ -11,4 +11,5 @@ class TestModel < Minitest::Unit::TestCase
   def worksheet; @worksheet ||= init_spreadsheet; end
   def init_spreadsheet; Model.new end
   def test_sheet1_b6; assert_in_epsilon(15778.8, worksheet.sheet1_b6, 0.002); end
+  def test_sheet1_b8; assert_in_epsilon(788940.0, worksheet.sheet1_b8, 0.002); end
 end

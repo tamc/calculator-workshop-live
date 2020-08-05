@@ -1,7 +1,7 @@
-// /Users/tamc/Downloads/calculator-workshop-live/model.xlsx approximately translated into C
+// /Users/tamc/Downloads/calculator-workshop-live/model/model.xlsx approximately translated into C
 // definitions
-#define NUMBER_OF_REFS 5
-#define EXCEL_FILENAME  "/Users/tamc/Downloads/calculator-workshop-live/model.xlsx"
+#define NUMBER_OF_REFS 11
+#define EXCEL_FILENAME  "/Users/tamc/Downloads/calculator-workshop-live/model/model.xlsx"
 // end of definitions
 
 // First we have c versions of all the excel functions that we know
@@ -3220,10 +3220,14 @@ static void assert_equal(ExcelValue expected, ExcelValue actual, char location[]
 // Start of the file specific functions
 
 ExcelValue sheet1_b2();
+ExcelValue sheet1_b3();
 ExcelValue sheet1_b6();
+ExcelValue sheet1_b8();
+static ExcelValue common0();
 // starting the value constants
-static ExcelValue constant1 = {.type = ExcelNumber, .number = 8766.0};
-static ExcelValue constant2 = {.type = ExcelNumber, .number = 0.3};
+static ExcelValue constant1 = {.type = ExcelNumber, .number = 0.3};
+static ExcelValue constant2 = {.type = ExcelNumber, .number = 50.0};
+static ExcelValue constant3 = {.type = ExcelNumber, .number = 8766.0};
 // ending the value constants
 
 ExcelValue sheet1_b2_default() {
@@ -3233,33 +3237,69 @@ static ExcelValue sheet1_b2_variable;
 ExcelValue sheet1_b2() { if(variable_set[0] == 1) { return sheet1_b2_variable; } else { return sheet1_b2_default(); } }
 void set_sheet1_b2(ExcelValue newValue) { variable_set[0] = 1; sheet1_b2_variable = newValue; }
 
-ExcelValue sheet1_b6() {
-  static ExcelValue result;
-  if(variable_set[1] == 1) { return result;}
-  result = multiply(constant1,multiply(constant2,sheet1_b2()));
-  variable_set[1] = 1;
-  return result;
+ExcelValue sheet1_b3_default() {
+  return constant1;
 }
+static ExcelValue sheet1_b3_variable;
+ExcelValue sheet1_b3() { if(variable_set[1] == 1) { return sheet1_b3_variable; } else { return sheet1_b3_default(); } }
+void set_sheet1_b3(ExcelValue newValue) { variable_set[1] = 1; sheet1_b3_variable = newValue; }
 
-// Start of named references
-ExcelValue output() {
-  static ExcelValue result;
-  if(variable_set[2] == 1) { return result;}
-  result = sheet1_b6();
-  variable_set[2] = 1;
-  return result;
-}
-
-ExcelValue capacity() {
+ExcelValue sheet1_b6() { return common0(); }
+ExcelValue sheet1_b8() {
   static ExcelValue result;
   if(variable_set[3] == 1) { return result;}
-  result = sheet1_b2();
+  result = multiply(constant2,common0());
   variable_set[3] = 1;
   return result;
 }
 
-void set_capacity(ExcelValue newValue) {
+static ExcelValue common0() {
+  static ExcelValue result;
+  if(variable_set[4] == 1) { return result;}
+  result = multiply(constant3,multiply(sheet1_b3(),sheet1_b2()));
+  variable_set[4] = 1;
+  return result;
+}
+
+// Start of named references
+ExcelValue output_energy() {
+  static ExcelValue result;
+  if(variable_set[5] == 1) { return result;}
+  result = sheet1_b6();
+  variable_set[5] = 1;
+  return result;
+}
+
+ExcelValue output_revenue() {
+  static ExcelValue result;
+  if(variable_set[6] == 1) { return result;}
+  result = sheet1_b8();
+  variable_set[6] = 1;
+  return result;
+}
+
+ExcelValue input_capacity() {
+  static ExcelValue result;
+  if(variable_set[7] == 1) { return result;}
+  result = sheet1_b2();
+  variable_set[7] = 1;
+  return result;
+}
+
+ExcelValue input_load_factor() {
+  static ExcelValue result;
+  if(variable_set[8] == 1) { return result;}
+  result = sheet1_b3();
+  variable_set[8] = 1;
+  return result;
+}
+
+void set_input_capacity(ExcelValue newValue) {
   set_sheet1_b2(newValue);
+}
+
+void set_input_load_factor(ExcelValue newValue) {
+  set_sheet1_b3(newValue);
 }
 
 // End of named references

@@ -115,13 +115,19 @@ class Model
     # use this function to reset all cell values
     attach_function 'reset', [], :void
     attach_function 'set_sheet1_b2', [ExcelValue.by_value], :void
+    attach_function 'set_sheet1_b3', [ExcelValue.by_value], :void
     attach_function 'sheet1_b6', [], ExcelValue.by_value
+    attach_function 'sheet1_b8', [], ExcelValue.by_value
     # end of Sheet1
     # Start of named references
-    attach_function 'output', [], ExcelValue.by_value
-    attach_function 'capacity', [], ExcelValue.by_value
-    attach_function 'output', [], ExcelValue.by_value
-    attach_function 'set_capacity', [ExcelValue.by_value], :void
+    attach_function 'output_energy', [], ExcelValue.by_value
+    attach_function 'output_revenue', [], ExcelValue.by_value
+    attach_function 'input_capacity', [], ExcelValue.by_value
+    attach_function 'input_load_factor', [], ExcelValue.by_value
+    attach_function 'output_energy', [], ExcelValue.by_value
+    attach_function 'output_revenue', [], ExcelValue.by_value
+    attach_function 'set_input_capacity', [ExcelValue.by_value], :void
+    attach_function 'set_input_load_factor', [ExcelValue.by_value], :void
     # End of named references
   end # C module
 end # Model
