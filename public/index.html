@@ -82,6 +82,9 @@
                 if(capacity_growth.length > 0) {
                     p.set('input_capacity_growth', JSON.stringify(capacity_growth));
                 }
+                let url = `${document.location.pathname}?${p}`;
+                
+                history.pushState(url, null, url);
                 return p;
             }
 
@@ -104,6 +107,13 @@
                     let v = (+data.input_capacity_growth[i] * 100).toFixed(0);
                     c.value = v;
                 });
+            }
+
+            function setControlsToMatchParameters() {
+                let p = new URLSearchParams(document.location.search.substring(1));
+                if(p.has('input_capacity')) {
+                    input_capacity.value = +p.get('input_capacity');
+                }
             }
 
             function updateOutputs(data) {
@@ -137,8 +147,15 @@
                 updateOutputs(data);
             }
 
+            async function urlChanged() {
+                setControlsToMatchParameters();
+                let data = await loadData();
+                updateOutputs(data);
+            }
+
             function listenForEvents() {
                 input_table.addEventListener('change', inputChanged)
+                window.addEventListener('popstate', urlChanged);
             }
 
             (async function() {
