@@ -71,7 +71,7 @@
             }
 
             function parameters() {
-                let p = new URLSearchParams();
+                let p = new URLSearchParams(document.location.search.substring(1));
                 if(input_capacity.value) {
                     p.set('input_capacity', input_capacity.value);
                 }
