@@ -82,9 +82,6 @@
                 if(capacity_growth.length > 0) {
                     p.set('input_capacity_growth', JSON.stringify(capacity_growth));
                 }
-                let url = `${document.location.pathname}?${p}`;
-                
-                history.pushState(url, null, url);
                 return p;
             }
 
@@ -142,7 +139,13 @@
                 });
             }
 
+            function updateURL()  {
+                let url = `${document.location.pathname}?${parameters()}`;                
+                history.pushState(url, null, url);
+            }
+
             async function inputChanged() {
+                updateURL();
                 let data = await loadData();
                 updateOutputs(data);
             }
