@@ -111,6 +111,17 @@
                 if(p.has('input_capacity')) {
                     input_capacity.value = +p.get('input_capacity');
                 }
+                if(p.has('input_load_factor')) {
+                    input_load_factor.value = +p.get('input_load_factor') * 100;
+                }
+                if(p.has('input_capacity_growth')) {
+                    let d = JSON.parse(p.get('input_capacity_growth'));
+                    input_table.querySelectorAll('.capacity_growth_control').forEach((c) => {
+                        let i = c.dataset.i;
+                        let v = (+d[i] * 100).toFixed(0);
+                        c.value = v;
+                    });
+                }
             }
 
             function updateOutputs(data) {
